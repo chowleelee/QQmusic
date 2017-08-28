@@ -1,0 +1,32 @@
+
+
+
+<view>
+  <view class="header" style="background-image: url('{{topListDetail.topinfo.pic_album}}')">
+   
+    <view class="cont">
+      <view class="txt">
+        <text class="title">{{topListDetail.topinfo.ListName}}</text>
+        <text class="time">{{topListDetail.update_time}} 更新</text>
+      </view>
+      <view class="audio"></view>
+    </view>
+
+    <view class="back" style="color:{{topListDetail.color}};">
+    </view>
+  </view>
+  <view class="content" style="background-color:{{topListDetail.color}};">
+    <block wx:for="{{topListDetail.songlist}}">
+      <view class="item" data-index="{{index}}" catchtap="onMusicTap">
+        <text class="index">{{index+1}}</text>
+        <view class="info">
+          <text class="songname">{{item.data.songname}}</text>
+          <view class="singer">
+            <text>{{item.data.singers}}</text>
+            <text>·{{item.data.albumname}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

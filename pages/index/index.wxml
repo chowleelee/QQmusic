@@ -1,0 +1,140 @@
+
+<view class="nav">
+  <view class="navCont">
+    <block wx:for="{{navArr}}">
+        <text catchtap="onNavTap" data-index="{{index}}">{{item}}</text>
+    </block>
+  </view>
+  <view class="bar" style="transform:translateX({{offLeft+'px'}})"></view>
+</view>
+
+<swiper current="{{currentTab}}" bindchange="onBindChange" style="height:{{screenHeight + 'px'}};">
+  <swiper-item>
+    <scroll-view scroll-y style="height:{{screenHeight + 'px'}}">
+      <view class="TJ">
+        <swiper class="banner" indicator-dots="{{true}}" indicator-color="rgba(144,144,144,.8)" indicator-active-color="#fff" autoplay="{{true}}" interval="{{3000}}">
+          <block wx:for="{{slider}}">
+            <swiper-item>
+              <image src="{{item.picUrl}}" class="slide-image"/>
+            </swiper-item>
+          </block>
+        </swiper>
+
+        <view class="TJ_radio" >
+          <text class="title">电台</text>
+          <view class="TJ_content">
+            <block wx:for="{{radioList}}">
+              <view class="item">
+                <image src="{{item.picUrl}}"></image>
+                <text>{{item.Ftitle}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+
+        <view class="TJ_hot" >
+          <text class="title">热门歌曲</text>
+          <view class="TJ_content">
+            <block wx:for="{{songList}}">
+              <view class="item" catchtap="onSongListTap" data-id="{{item.id}}">
+                <image src="{{item.picUrl}}"></image>
+                <text class="qty">{{item.accessnum}}</text>
+                <text>{{item.songListDesc}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y style="height:{{screenHeight + 'px'}}">
+      <view class="PHB">
+        <block wx:for="{{topList}}">
+          <view catchtap="onTopListTap" class="item" data-id="{{item.id}}">
+            <view class="img">
+              <image src="{{item.picUrl}}"></image>
+              <text>{{item.listenCount}}</text>
+            </view>
+            <view class="txt">
+              <text class="title">{{item.topTitle}}</text>
+              <block wx:for="{{item.songList}}">
+                <view class="txt_cont">
+                    <text>{{index+1}}</text>
+                    <text>{{item.songname}}</text>
+                    <text>{{item.singername}}</text>
+                </view>
+              </block>
+            </view>
+            <view class="line">></view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <view class="SS">
+      <view class="search">
+        <view class="left">
+          <icon type="search" size="13" color="#405f80"></icon>
+          <input type="text" class="search-input" value="{{searchValue}}" placeholder="搜索歌曲、歌单、专辑" bindfocus="onBindFocus" bindinput="onBindInput" bindconfirm="onBindConfirm"/>
+          <icon type="clear" wx:if="{{searchValue}}" size="18" color="#b1b1b1" bindtap="onClearTap"/>
+        </view>
+        <text class="right" wx:if="{{closeShow}}" bindtap="onCloseTap">取消</text>
+      </view>
+
+      <view class="hotkey" wx:if="{{!closeShow}}">
+        <text>热门搜索</text>
+        <view class="keywords">
+          <text class="cur" catchtap="onSpecialkeyTap">{{specialkey}}</text>
+          <block wx:for="{{hotkey}}">
+            <text catchtap="onHotkeyTap" data-index="{{item.k}}">{{item.k}}</text>
+          </block>
+        </view>
+      </view>
+
+      <view class="history" wx:if="{{historyShow}}">
+        <block wx:for="{{historyItems}}">
+          <view class="item" data-index="{{index}}">
+            <view class="cont" catchtap="onHistoryTap">
+              <icon type="waiting_circle" size="18"/>
+              <text>{{item}}</text>
+            </view>
+            <icon type="clear" size="18" color="#b1b1b1" data-index="{{index}}" bindtap="onClearHistoryTap"/>
+          </view>
+        </block>
+        <text class="clearAll" catchtap="onClearAllTap">清空搜索历史</text>
+      </view>
+
+      <view class="result" wx:if="{{containerShow}}">
+        <scroll-view scroll-x="false" scroll-y="true" style="height:1300rpx;" bindscrolltolower="onScrollLower">
+          <block wx:for="{{song}}">
+            <view class="item" data-index="{{index}}" catchtap="onResultTap">
+              <view class="img"></view>
+              <view class="info">
+                <text class="songname">{{item.songname}}</text>
+                <view class="name">
+                  <block wx:for="{{item.singer}}">
+                    <text>{{item.name}}/</text>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class="musicArea">
+  <view class="songname">
+    <text>{{songname? songname:''}} </text>
+  </view>
+  <image catchtap="onMusicAreaTap" class="avatar {{isPlayingMusic? 'cur':''}}" src="{{imgUrl? imgUrl:'/images/logo.png'}}"></image>
+  <view class="playCtr">
+    <view class="img {{isPlayingMusic? 'imgPause':'imgPlay'}}" catchtap="onPlayTap"></view>
+  </view>
+</view>

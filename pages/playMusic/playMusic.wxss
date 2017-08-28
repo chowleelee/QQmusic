@@ -1,0 +1,175 @@
+Page{
+  font-family: "微软雅黑";
+  font-size: 28rpx;
+  color:#fff;
+  background: #000;
+}
+.public{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.wrap{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  position:relative;
+  z-index:3;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding:30rpx;
+  position:relative;
+  z-index:3;
+  background:rgba(0,0,0,.1);
+}
+.header .pic{
+  width:160rpx;
+  height:160rpx;
+  margin-right:30rpx;
+}
+.header .txt{
+  width:340rpx;
+  align-self: center;
+}
+.header .txt .songname{
+  font-size: 36rpx;
+}
+
+.header .txt text{
+  display: block;
+}
+.header .name{
+  width:100%;
+}
+.header .audio{
+  margin-left:30rpx;
+  width:96rpx;
+  height:96rpx;
+  align-self: center;
+}
+
+.mid{
+  position:relative;
+  z-index:3;
+  color:rgba(255,255,255,.6);
+  font-size:32rpx;
+  padding:40rpx 20rpx;
+  text-align: center;
+  line-height: 84rpx;
+}
+.mid text{
+  display:block;
+}
+.mid .cur{
+  color:#31c27c;
+}
+.songList{
+  position:relative;
+  z-index:3;
+  background:url("../../images/sprite_play.png");
+  background-repeat: no-repeat;
+  background-size: 40px 350px;
+  width: 24px;
+  height: 18px;
+  margin-top: 11px;
+  background-position: 0 -240px;
+  margin-left:40rpx;
+}
+.songList_layout{
+  color:#fff;
+  background: rgba(0,0,0,.6);
+  position:absolute;
+  z-index:4;
+  height:760rpx;  
+  bottom:-760rpx;
+  width:100%;
+  transition:all 1s linear;
+}
+.songList_layout .title, .songList_layout .btm{
+  font-size:32rpx;
+  line-height:110rpx;
+  text-align:center;
+}
+.songList_layout .title{
+  border-bottom:2rpx solid rgba(255,255,255,.3);
+}
+.songList_layout .btm{
+  width:100%;
+  border-top:2rpx solid rgba(255,255,255,.3);
+  position:absolute;
+  z-index:4;
+  bottom:0;
+}
+.songList_layout .content{
+  overflow:hidden;
+}
+.songList_layout .item{
+  margin:0 30rpx;
+  border-bottom:2rpx solid rgba(255,255,255,.3);
+}
+.songList_layout .item.cur{
+  color:#31c27c;
+}
+.songList_layout .item text{
+  line-height:90rpx;
+  display:inline-block;
+  max-width:45%;
+}
+.songList_layout .item text:nth-child(1){
+  font-size:32rpx;
+}
+
+.footer{
+  position:relative;
+  z-index:3;
+  display: flex;
+  padding:30rpx 20rpx;
+  justify-content: space-between
+}
+.footer text{
+  color:#808080;
+}
+.footer .bar_area{
+  width:100%;
+  height: 25rpx;
+  align-self: center;
+  text-align: center;
+  margin:0 20rpx;
+  display: flex;
+}
+.footer .bar_area .bar{
+  width:100%;
+  height:4rpx;
+  background:#808080;
+  align-self: center;
+}
+.footer .bar_area .bar .curBar{
+  background: #31c27c;
+  height:4rpx;
+  width:0%;
+}
+
+.bg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background-size: cover;
+  background-position: bottom center;
+  filter: blur(15px);
+  transform: scale(1.15);
+}
+.mask{
+    opacity:0.6;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    background-color: #000;
+}

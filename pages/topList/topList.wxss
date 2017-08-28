@@ -1,0 +1,104 @@
+Page{
+  font-family: "微软雅黑";
+  font-size: 32rpx;
+}
+
+.header{
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  height:750rpx;
+  position: relative;
+  z-index: 1;
+}
+.header .cont{
+  position: relative;
+  padding:0 30rpx;
+  bottom:-600rpx;
+  display: flex;
+  z-index: 2;
+  justify-content: space-between;
+  color:#fff;
+}
+.header .back{
+    position: absolute;
+    padding-top: 60%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background: linear-gradient(to bottom,transparent,currentColor 80%);
+}
+.header .txt{
+  display: flex;
+  flex-direction: column;
+}
+.header .txt .title{
+  font-size: 48rpx;
+}
+.header .txt .time{
+  font-size: 28rpx;
+}
+.header .audio{
+  width:92rpx;
+  height:92rpx;
+  border-radius: 100%; 
+  border:4rpx solid #fff;
+  position: relative;
+}
+.header .audio:before{
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    border-color: transparent transparent transparent #fff;
+    border-width: 9px 15px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.content{
+  overflow: hidden;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+.content .item{
+  display: flex;
+  overflow: hidden;
+  margin-left:40rpx;
+}
+.content .item .index{
+  width:100rpx;
+  align-self: center;
+  font-size:36rpx;
+  color:#fff;
+}
+.content .item .info{
+  display: flex;
+  width:100%;
+  padding:15rpx 0;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.content .item .info .songname{
+  color:#fff;
+  width:95%;
+  font-size:36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.content .item .info .singer{
+  color:grey;
+  width:95%;
+  font-size:28rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,0 +1,52 @@
+
+
+<view class="wrap" style="height:{{screenHeight + 'px'}}">
+  <view class="header">
+    <image class="pic" src="{{imgUrl}}"></image>
+    <view class="txt">
+      <text class="songname public">{{song.songname || song.title}}</text>
+      <text class="name public">{{song.singers}}</text>
+    </view>
+    <image catchtap="onMusicTap" src="{{isPlayingMusic ? '/images/icon-pause.png' : '/images/icon-play.png'}}" class="audio"></image>
+  </view>
+  <view class="mid">
+    <scroll-view scroll-y scroll-top="{{scrollTop}}" scroll-with-animation="true" style="height: 672rpx;">
+      <block wx:for="{{lyric}}">
+        <text class="{{item.time <= currentPosition && item.endTime > currentPosition ? 'cur':''}}">{{item.clause}}</text>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="songList" catchtap="onSonglistTap"></view>
+  <view class="songList_layout" style="bottom:{{songlistShow ? '0rpx' : '-760rpx'}}">
+    <view class="title">
+      <text>播放队列(50首)</text>
+    </view>
+    <scroll-view scroll-y style="height:540rpx" class="content">
+      <block wx:for="{{songs}}">
+        <view class="item {{index == indexs ? 'cur':''}}" data-index="{{index}}" catchtap="onSongListItemTap">
+          <text class="public">{{item.data.songname || item.songname || item.title}}</text>
+          <text class="public"> - {{item.data.singer[0].name || item.singer[0].name}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="btm">
+      <text catchtap="onSonglistCloseTap">关闭</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="start">{{time.m}}:{{time.s}}</text>
+    <view class="bar_area" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+      <view class="bar">
+        <view class="curBar" style="width:{{width}}">
+        </view>
+      </view>
+    </view>
+    <text class="end">{{tTime.m}}:{{tTime.s}}</text>
+  </view>
+
+
+  <view class="bg" style="background-image:url('{{imgUrl}}')"></view>
+  <view class="mask"></view>
+</view>

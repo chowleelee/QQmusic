@@ -1,0 +1,53 @@
+
+
+<view>
+  <view class="header" style="background-image: url('{{bg}}')">
+   
+    <view class="cont">
+      <view class="txt">
+      	<view class="title">
+      		<swiper autoplay="{{true}}" interval="{{5000}}" circular="true" duration="{{3000}}" style="width:1000rpx; height:70rpx;">
+	      		<swiper-item>
+	        		<text class="title">{{dissname}}</text>
+	        	</swiper-item>
+	        	<swiper-item>
+	        		<text class="title">{{dissname}}</text>
+	        	</swiper-item>
+	      	</swiper>
+      	</view>
+        <text class="infos">{{visitnum}}人播放 来自：{{nickname}}</text>
+      </view>
+      <view class="audio"></view>
+    </view>
+    <view class="back" style="color:{{color}};">
+    </view>
+  </view>
+
+  <view class="content" style="background:{{color}};">
+    <block wx:for="{{cdList}}">
+      <view class="item" data-index="{{index}}" catchtap="onMusicTap">
+        <view class="info">
+          <text class="songname">{{item.title}}</text>
+          <view class="singer">
+              <text>{{item.singers}}</text>
+            <text> · {{item.album.name}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="btm" style="background:{{color}};">
+  	<text class="title">标签</text>
+  	<view class="tag">
+  		<block wx:for="{{tags}}">
+  			<text>{{item.name}}</text>
+  		</block>
+  	</view>
+  	<view class="info">
+  		<text class="title">简介</text>
+  		<text class="cont">{{desc}}</text>
+  	</view>
+  </view>
+
+</view>
