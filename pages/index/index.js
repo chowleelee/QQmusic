@@ -62,8 +62,7 @@ Page({
         imgUrl: app.globalData.imgUrl,
         isPlayingMusic: app.globalData.isPlayingMusic,
         songname:app.globalData.songname,
-        songmid: app.globalData.songmid,
-        indexs: app.globalData.indexs
+        songmid: app.globalData.songmid
       });
     },1000)
   },

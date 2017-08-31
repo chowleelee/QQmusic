@@ -22,7 +22,6 @@ Page({
 	},
 
   onMusicTap: function(ev){
-    console.log(ev);
     var index = ev.currentTarget.dataset.index;
     app.globalData.songlist = this.data.topListDetail.songlist;
     app.globalData.index = index;

@@ -11,15 +11,6 @@ Page({
       songs: app.globalData.songlist,
       index: app.globalData.index
     });
-    if(app.globalData.indexs == this.data.index){
-      this.setData({
-        isPlayingMusic: app.globalData.isPlayingMusic
-      });
-    }else{
-      this.setData({
-        isPlayingMusic: false
-      });
-    }
     this.init();
   },
 
@@ -43,12 +34,19 @@ Page({
     this.setData({
       imgUrl: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + (this.data.song.albummid || this.data.song.album.mid) + '.jpg'
     });
+    if(app.globalData.songmid == (this.data.song.songmid || this.data.song.file.media_mid)){
+      this.setData({
+        isPlayingMusic: app.globalData.isPlayingMusic
+      });
+    }else{
+      this.setData({
+        isPlayingMusic: false
+      });
+    }
 
     app.globalData.imgUrl = this.data.imgUrl;
     app.globalData.songname = this.data.song.songname || this.data.song.title;
-    app.globalData.songmid = this.data .song.songmid || this.data.song.file.media_mid;
-    app.globalData.indexs = index;
-    app.globalData.index = index;
+    app.globalData.songmid = this.data.song.songmid || this.data.song.file.media_mid;
 
     
     wx.getSystemInfo({ 
