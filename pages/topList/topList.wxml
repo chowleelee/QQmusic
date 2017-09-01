@@ -2,7 +2,7 @@
 
 
 <view>
-  <view class="header" style="background-image: url('{{topListDetail.topinfo.pic_album}}')">
+  <view class="header" wx:if="{{topListDetail.topinfo.pic_album}}" style="background-image: url('{{topListDetail.topinfo.pic_album}}')">
    
     <view class="cont">
       <view class="txt">
@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="content" style="background-color:{{topListDetail.color}};">
-    <block wx:for="{{topListDetail.songlist}}">
+    <block wx:for="{{topListDetail.songlist}}" wx:key="unique">
       <view class="item" data-index="{{index}}" catchtap="onMusicTap">
         <text class="index">{{index+1}}</text>
         <view class="info">

@@ -2,7 +2,7 @@
 
 <view class="wrap" style="height:{{screenHeight + 'px'}}">
   <view class="header">
-    <image class="pic" src="{{imgUrl}}"></image>
+    <image class="pic" wx:if="{{imgUrl}}" src="{{imgUrl}}"></image>
     <view class="txt">
       <text class="songname public">{{song.songname || song.title}}</text>
       <text class="name public">{{song.singers}}</text>
@@ -11,19 +11,19 @@
   </view>
   <view class="mid">
     <scroll-view scroll-y scroll-top="{{scrollTop}}" scroll-with-animation="true" style="height: 672rpx;">
-      <block wx:for="{{lyric}}">
+      <block wx:for="{{lyric}}" wx:key="unique">
         <text class="{{item.time <= currentPosition && item.endTime > currentPosition ? 'cur':''}}">{{item.clause}}</text>
       </block>
     </scroll-view>
   </view>
 
-  <view class="songList" catchtap="onSonglistTap"></view>
+  <view class="songList" catchtap="onSonglistTap" style="background-image:url('/images/sprite_play.png');"></view>
   <view class="songList_layout" style="bottom:{{songlistShow ? '0rpx' : '-760rpx'}}">
     <view class="title">
       <text>播放队列(50首)</text>
     </view>
     <scroll-view scroll-y style="height:540rpx" class="content">
-      <block wx:for="{{songs}}">
+      <block wx:for="{{songs}}" wx:key="unique">
         <view class="item {{index == indexs ? 'cur':''}}" data-index="{{index}}" catchtap="onSongListItemTap">
           <text class="public">{{item.data.songname || item.songname || item.title}}</text>
           <text class="public"> - {{item.data.singer[0].name || item.singer[0].name}}</text>
@@ -47,6 +47,6 @@
   </view>
 
 
-  <view class="bg" style="background-image:url('{{imgUrl}}')"></view>
+  <view class="bg" wx:if="{{imgUrl}}" style="background-image:url('{{imgUrl}}')"></view>
   <view class="mask"></view>
 </view>

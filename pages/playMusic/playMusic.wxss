@@ -68,7 +68,7 @@ Page{
 .songList{
   position:relative;
   z-index:3;
-  background:url("../../images/sprite_play.png");
+  /*background:url("../../images/sprite_play.png");*/
   background-repeat: no-repeat;
   background-size: 40px 350px;
   width: 24px;

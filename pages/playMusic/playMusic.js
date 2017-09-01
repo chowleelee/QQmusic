@@ -153,7 +153,8 @@ Page({
               width: that.processWidth(res.currentPosition, res.duration)
             });
             app.globalData.timer = that.data.timer;
-            if(res.duration && res.currentPosition && res.duration == res.currentPosition){
+            //console.log(res.duration, res.currentPosition);
+            if(res.duration && res.currentPosition && res.duration <= res.currentPosition){
               clearInterval(that.data.timer);
               that.setData({
                 songs: app.globalData.songlist,
@@ -165,7 +166,7 @@ Page({
             }
         }
       })
-    }, 800);
+    }, 1000);
   },
 
 
@@ -217,6 +218,7 @@ Page({
         isPlayingMusic: false
       });
       clearInterval(this.data.timer2);
+      clearInterval(this.data.timer);
     }else{
       wx.playBackgroundAudio({
         dataUrl: 'http://ws.stream.qqmusic.qq.com/C100' + (this.data.song.songmid || this.data.song.file.media_mid) + '.m4a?fromtag=38'
@@ -225,6 +227,7 @@ Page({
         isPlayingMusic: true
       });
       this.GCMove();
+      this.barMove();
     }
     app.globalData.isPlayingMusic = this.data.isPlayingMusic;
   },

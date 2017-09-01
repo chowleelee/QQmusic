@@ -240,7 +240,7 @@ function requestSearch(text, page, callback){
 
 function requestGC(id, callback){
     wx.request({
-    url: 'http://route.showapi.com/213-2',
+    url: 'https://route.showapi.com/213-2',
     data: {
       musicid: id,
       showapi_appid: '23654',
@@ -264,9 +264,9 @@ module.exports = {
 	requestTJ: requestTJ,
 	requestPHB: requestPHB,
 	requestSS: requestSS,
-    requestCDList: requestCDList,
+  requestCDList: requestCDList,
 	requestTopList: requestTopList,
-    calculateBgColor: calculateBgColor,
-    requestSearch: requestSearch,
-    requestGC: requestGC
+  calculateBgColor: calculateBgColor,
+  requestSearch: requestSearch,
+  requestGC: requestGC
 }

@@ -1,7 +1,7 @@
 
 <view class="nav">
   <view class="navCont">
-    <block wx:for="{{navArr}}">
+    <block wx:for="{{navArr}}" wx:key="unique">
         <text catchtap="onNavTap" data-index="{{index}}">{{item}}</text>
     </block>
   </view>
@@ -13,7 +13,7 @@
     <scroll-view scroll-y style="height:{{screenHeight + 'px'}}">
       <view class="TJ">
         <swiper class="banner" indicator-dots="{{true}}" indicator-color="rgba(144,144,144,.8)" indicator-active-color="#fff" autoplay="{{true}}" interval="{{3000}}">
-          <block wx:for="{{slider}}">
+          <block wx:for="{{slider}}" wx:key="unique">
             <swiper-item>
               <image src="{{item.picUrl}}" class="slide-image"/>
             </swiper-item>
@@ -23,7 +23,7 @@
         <view class="TJ_radio" >
           <text class="title">电台</text>
           <view class="TJ_content">
-            <block wx:for="{{radioList}}">
+            <block wx:for="{{radioList}}" wx:key="unique">
               <view class="item">
                 <image src="{{item.picUrl}}"></image>
                 <text>{{item.Ftitle}}</text>
@@ -35,7 +35,7 @@
         <view class="TJ_hot" >
           <text class="title">热门歌曲</text>
           <view class="TJ_content">
-            <block wx:for="{{songList}}">
+            <block wx:for="{{songList}}" wx:key="unique">
               <view class="item" catchtap="onSongListTap" data-id="{{item.id}}">
                 <image src="{{item.picUrl}}"></image>
                 <text class="qty">{{item.accessnum}}</text>
@@ -51,7 +51,7 @@
   <swiper-item>
     <scroll-view scroll-y style="height:{{screenHeight + 'px'}}">
       <view class="PHB">
-        <block wx:for="{{topList}}">
+        <block wx:for="{{topList}}" wx:key="unique">
           <view catchtap="onTopListTap" class="item" data-id="{{item.id}}">
             <view class="img">
               <image src="{{item.picUrl}}"></image>
@@ -59,7 +59,7 @@
             </view>
             <view class="txt">
               <text class="title">{{item.topTitle}}</text>
-              <block wx:for="{{item.songList}}">
+              <block wx:for="{{item.songList}}" wx:key="unique">
                 <view class="txt_cont">
                     <text>{{index+1}}</text>
                     <text>{{item.songname}}</text>
@@ -89,14 +89,14 @@
         <text>热门搜索</text>
         <view class="keywords">
           <text class="cur" catchtap="onSpecialkeyTap">{{specialkey}}</text>
-          <block wx:for="{{hotkey}}">
+          <block wx:for="{{hotkey}}" wx:key="unique">
             <text catchtap="onHotkeyTap" data-index="{{item.k}}">{{item.k}}</text>
           </block>
         </view>
       </view>
 
       <view class="history" wx:if="{{historyShow}}">
-        <block wx:for="{{historyItems}}">
+        <block wx:for="{{historyItems}}" wx:key="unique">
           <view class="item" data-index="{{index}}">
             <view class="cont" catchtap="onHistoryTap">
               <icon type="waiting_circle" size="18"/>
@@ -110,13 +110,13 @@
 
       <view class="result" wx:if="{{containerShow}}">
         <scroll-view scroll-x="false" scroll-y="true" style="height:1300rpx;" bindscrolltolower="onScrollLower">
-          <block wx:for="{{song}}">
+          <block wx:for="{{song}}" wx:key="unique">
             <view class="item" data-index="{{index}}" catchtap="onResultTap">
               <view class="img"></view>
               <view class="info">
                 <text class="songname">{{item.songname}}</text>
                 <view class="name">
-                  <block wx:for="{{item.singer}}">
+                  <block wx:for="{{item.singer}}" wx:key="unique">
                     <text>{{item.name}}/</text>
                   </block>
                 </view>
@@ -135,6 +135,6 @@
   </view>
   <image catchtap="onMusicAreaTap" class="avatar {{isPlayingMusic? 'cur':''}}" src="{{imgUrl? imgUrl:'/images/logo.png'}}"></image>
   <view class="playCtr">
-    <view class="img {{isPlayingMusic? 'imgPause':'imgPlay'}}" catchtap="onPlayTap"></view>
+    <view style="background-image: url('/images/sprite_play.png');" class="img {{isPlayingMusic? 'imgPause':'imgPlay'}}" catchtap="onPlayTap"></view>
   </view>
 </view>

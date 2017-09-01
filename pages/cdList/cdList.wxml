@@ -1,7 +1,7 @@
 
 
 <view>
-  <view class="header" style="background-image: url('{{bg}}')">
+  <view class="header" wx:if="{{bg}}" style="background-image: url('{{bg}}')">
    
     <view class="cont">
       <view class="txt">
@@ -24,7 +24,7 @@
   </view>
 
   <view class="content" style="background:{{color}};">
-    <block wx:for="{{cdList}}">
+    <block wx:for="{{cdList}}" wx:key="unique">
       <view class="item" data-index="{{index}}" catchtap="onMusicTap">
         <view class="info">
           <text class="songname">{{item.title}}</text>
@@ -40,7 +40,7 @@
   <view class="btm" style="background:{{color}};">
   	<text class="title">标签</text>
   	<view class="tag">
-  		<block wx:for="{{tags}}">
+  		<block wx:for="{{tags}}" wx:key="unique">
   			<text>{{item.name}}</text>
   		</block>
   	</view>

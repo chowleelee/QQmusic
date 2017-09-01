@@ -312,7 +312,7 @@ Page{
   width:50%;
 }
 .musicArea .playCtr .img{
-  background-image: url('../../images/sprite_play.png');
+  /*background-image: url('../../images/sprite_play.png');*/
   background-size: 80rpx 700rpx;
   background-repeat: no-repeat;
   margin-top:18rpx;
